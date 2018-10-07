@@ -1,0 +1,36 @@
+{
+  "name": "soappli-node-api",
+  "version": "1.0.0",
+  "description": "API REST pour SoAppli - MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node ./src/server.ts",
+    "start": "nodemon ./dist/server.js",
+    "prod": "npm run build && npm run start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dacodemaniak/soappli-node-api.git"
+  },
+  "keywords": [
+    "REST",
+    "MongoDB",
+    "TypeScript"
+  ],
+  "author": "IDea Factory",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dacodemaniak/soappli-node-api/issues"
+  },
+  "homepage": "https://github.com/dacodemaniak/soappli-node-api#readme",
+  "dependencies": {
+    "@types/express": "^4.16.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "md5-typescript": "^1.0.5",
+    "mongoose": "^5.3.1",
+    "nodemon": "^1.18.4"
+  }
+}
