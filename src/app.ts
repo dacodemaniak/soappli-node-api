@@ -6,11 +6,20 @@
 
 import * as express from "express";
 import * as bodyParser from "body-parser";
+import * as cors from "cors";
 import * as mongoose from "mongoose";
 
 import SoAppliRouter from './routes/soappliRouter';
 import AccountRouter from './routes/accountRouter';
 
+// Définition des options CORS
+const corsOptions: cors.CorsOptions = {
+    allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
+    credentials: true,
+    methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
+    origin: '*',
+    preflightContinue: false
+}
 class App {
     /**
      * @var app express.Application Application node
@@ -44,8 +53,10 @@ class App {
 
     private _setRoutes(): void {
         // Routes standard
+        SoAppliRouter.use(cors(corsOptions));
         this.app.use('/', SoAppliRouter);
-
+        
+        AccountRouter.use(cors(corsOptions));
         this.app.use('/api/v2/account', AccountRouter)
     }
 
