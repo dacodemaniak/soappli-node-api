@@ -40,6 +40,11 @@ export class AccountRouter {
             .post(
                 '/',
                 this._add
+            )
+            
+            .put(
+                '/:mongoId',
+                this._updatePassword
             );
     }
 
@@ -80,6 +85,10 @@ export class AccountRouter {
     private _add(request: Request, response: Response, next: NextFunction) {
         
         accountController.add(request, response, next);
+    }
+
+    private _updatePassword(request: Request, response: Response, next: NextFunction) {
+        accountController.updatePassword(request, response, next);
     }
 }
 

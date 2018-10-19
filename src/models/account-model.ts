@@ -44,6 +44,9 @@ export const AccountSchema = new schema(
             type: String,
             required: 'Le mot de passe est obligatoire',
             set: Md5Helper.crypt
+        },
+        token: {
+            type: String
         }
     }
 );

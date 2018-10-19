@@ -25,15 +25,18 @@
         Account.find({userName: request.params.username}, (error, account) => {
             if (error) {
                 response.status(500).send({
+                    status: 500,
                     message: 'Une erreur est survenue dans la requête'
                 });
             } else {
                 if (account.length) {
                     response.status(409).send({
+                        status: 409,
                         message: 'Désolé, ce pseudo est déjà utilisé'
                     })
                 } else {
                     response.status(200).send({
+                        status: 200,
                         message: 'Ce compte n\'existe pas'
                     })
                 }
@@ -56,5 +59,18 @@
             }
             response.json(newAccount);
         })
+    }
+
+    public updatePassword(request: Request, response: Response, next: NextFunction) {
+        Account.findOneAndUpdate(
+            {_id: request.params.mongoId},
+            request.body,
+            { new: true}, (error, account) => {
+                if (error) {
+                    response.status(500).send(error);
+                }
+                response.status(200).send(account);
+            }
+        );
     }
  }
