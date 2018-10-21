@@ -19,10 +19,13 @@ export class AccountRouter {
     constructor() {
         this.router = Router();
 
+        console.log('Instanciation des routes');
+        
         this._init();
     }
 
     private _init(): void {
+        console.log('Initialise les routes');
 
         // Requête d'authentification
         this.router
@@ -36,16 +39,19 @@ export class AccountRouter {
                 '/:username',
                 this._check
             )
-
+            // Ajout d'un compte
             .post(
                 '/',
                 this._add
             )
             
+            // Mise à jour d'un compte
             .put(
                 '/:mongoId',
-                this._updatePassword
-            );
+                this._update
+            )
+
+        console.log(this.router.stack);
     }
 
     /**
@@ -87,8 +93,9 @@ export class AccountRouter {
         accountController.add(request, response, next);
     }
 
-    private _updatePassword(request: Request, response: Response, next: NextFunction) {
-        accountController.updatePassword(request, response, next);
+    private _update(request: Request, response: Response, next: NextFunction) {
+        console.log('Mise à jour du compte : ' + request.body._id);
+        accountController.update(request, response, next);
     }
 }
 

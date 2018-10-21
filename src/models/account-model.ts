@@ -7,6 +7,7 @@
  */
 import * as mongoose from 'mongoose';
 import { Md5Helper } from './../helpers/md5-helper';
+import { SettingsSchema } from './settings-model';
 
 const schema = mongoose.Schema;
 
@@ -47,6 +48,9 @@ export const AccountSchema = new schema(
         },
         token: {
             type: String
+        },
+        settings: {
+            type: SettingsSchema
         }
     }
 );

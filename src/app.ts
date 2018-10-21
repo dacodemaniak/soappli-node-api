@@ -37,7 +37,7 @@ class App {
         // Connexion au serveur MongoDB
         this._mongoSetup();
 
-        // Définit les routes standard
+        // Définit les routes
         this._setRoutes();
     }
 
@@ -56,8 +56,9 @@ class App {
         SoAppliRouter.use(cors(corsOptions));
         this.app.use('/', SoAppliRouter);
         
+        // Routes pour la gestion des comptes
         AccountRouter.use(cors(corsOptions));
-        this.app.use('/api/v2/account', AccountRouter)
+        this.app.use('/api/v2/account', AccountRouter);
     }
 
     private _mongoSetup(): void {

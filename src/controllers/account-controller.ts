@@ -61,15 +61,16 @@
         })
     }
 
-    public updatePassword(request: Request, response: Response, next: NextFunction) {
+    public update(request: Request, response: Response, next: NextFunction) {
+        console.log('Compte : ' + request.params.mongoId);
         Account.findOneAndUpdate(
             {_id: request.params.mongoId},
             request.body,
-            { new: true}, (error, account) => {
+            { new: true }, (error, account) => {
                 if (error) {
                     response.status(500).send(error);
                 }
-                response.status(200).send(account);
+                response.status(200).json(account);
             }
         );
     }
