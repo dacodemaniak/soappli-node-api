@@ -18,14 +18,11 @@ export class AccountRouter {
      */
     constructor() {
         this.router = Router();
-
-        console.log('Instanciation des routes');
         
         this._init();
     }
 
     private _init(): void {
-        console.log('Initialise les routes');
 
         // Requête d'authentification
         this.router
@@ -50,8 +47,6 @@ export class AccountRouter {
                 '/:mongoId',
                 this._update
             )
-
-        console.log(this.router.stack);
     }
 
     /**
