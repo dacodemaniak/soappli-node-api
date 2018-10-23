@@ -5,60 +5,69 @@
  * @package src/routes
  * @version 1.0.0
  */
-exports.__esModule = true;
-var express_1 = require("express");
-var account_controller_1 = require("./../controllers/account-controller");
-var accountController = new account_controller_1.AccountController();
-var AccountRouter = /** @class */ (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const account_controller_1 = require("./../controllers/account-controller");
+const accountController = new account_controller_1.AccountController();
+class AccountRouter {
     /**
      * Instanciation du contrôleur pour les comptes
      */
-    function AccountRouter() {
+    constructor() {
         this.router = express_1.Router();
+        console.log('Instanciation des routes');
         this._init();
     }
-    AccountRouter.prototype._init = function () {
+    _init() {
+        console.log('Initialise les routes');
         // Requête d'authentification
         this.router
             .get('/:username/:secureKey', this._authenticate)
             // Requête de contrôle d'existence
             .get('/:username', this._check)
-            .post('/', this._add);
-    };
+            // Ajout d'un compte
+            .post('/', this._add)
+            // Mise à jour d'un compte
+            .put('/:mongoId', this._update);
+        console.log(this.router.stack);
+    }
     /**
      * Authentification d'un compte SoAppli!
      * @param request
      * @param response
      * @param next
      */
-    AccountRouter.prototype._authenticate = function (request, response, next) {
+    _authenticate(request, response, next) {
         if (request.params.username && request.params.secureKey) {
             response.status(200).send({ message: 'Account GET : ' + request.params.username });
         }
         else {
             response.status(400).send({ message: 'Requête incorrecte' });
         }
-    };
+    }
     /**
      * Contrôle d'existence d'un compte avec ce username
      * @param request
      * @param response
      * @param next
      */
-    AccountRouter.prototype._check = function (request, response, next) {
+    _check(request, response, next) {
         accountController.check(request, response, next);
-    };
+    }
     /**
      * Appelle le contrôleur pour l'ajout d'un compte
      * @param request
      * @param response
      * @param next
      */
-    AccountRouter.prototype._add = function (request, response, next) {
+    _add(request, response, next) {
         accountController.add(request, response, next);
-    };
-    return AccountRouter;
-}());
+    }
+    _update(request, response, next) {
+        accountController.update(request, response, next);
+    }
+}
 exports.AccountRouter = AccountRouter;
-var accountRoutes = new AccountRouter();
-exports["default"] = accountRoutes.router;
+const accountRoutes = new AccountRouter();
+exports.default = accountRoutes.router;
+//# sourceMappingURL=accountRouter.js.map

@@ -5,22 +5,20 @@
  * @package src/controllers
  * @version 1.0.0
  */
-exports.__esModule = true;
-var mongoose = require("mongoose");
-var account_model_1 = require("./../models/account-model");
-var Account = mongoose.model('Account', account_model_1.AccountSchema);
-var AccountController = /** @class */ (function () {
-    function AccountController() {
-    }
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose = require("mongoose");
+const account_model_1 = require("./../models/account-model");
+const Account = mongoose.model('Account', account_model_1.AccountSchema);
+class AccountController {
     /**
      * Vérifie l'existence du pseudo au préalable
      * @param request
      * @param response
      * @param next
      */
-    AccountController.prototype.check = function (request, response, next) {
+    check(request, response, next) {
         console.log('Cherche un compte avec le pseudo : ' + request.params.username);
-        Account.find({ userName: request.params.username }, function (error, account) {
+        Account.find({ userName: request.params.username }, (error, account) => {
             if (error) {
                 response.status(500).send({
                     status: 500,
@@ -42,22 +40,30 @@ var AccountController = /** @class */ (function () {
                 }
             }
         });
-    };
+    }
     /**
      * Création d'un nouveau compte
      * @param request
      * @param response
      * @param next
      */
-    AccountController.prototype.add = function (request, response, next) {
-        var account = new Account(request.body);
-        account.save(function (error, newAccount) {
+    add(request, response, next) {
+        let account = new Account(request.body);
+        account.save((error, newAccount) => {
             if (error) {
                 response.status(500).send(error);
             }
             response.json(newAccount);
         });
-    };
-    return AccountController;
-}());
+    }
+    update(request, response, next) {
+        Account.findOneAndUpdate({ _id: request.params.mongoId }, request.body, { new: true }, (error, account) => {
+            if (error) {
+                response.status(500).send(error);
+            }
+            response.status(200).json(account);
+        });
+    }
+}
 exports.AccountController = AccountController;
+//# sourceMappingURL=account-controller.js.map

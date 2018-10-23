@@ -62,7 +62,6 @@
     }
 
     public update(request: Request, response: Response, next: NextFunction) {
-        console.log('Compte : ' + request.params.mongoId);
         Account.findOneAndUpdate(
             {_id: request.params.mongoId},
             request.body,

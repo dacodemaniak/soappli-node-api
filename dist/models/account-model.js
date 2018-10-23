@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * @name AccountModel Modèle pour la gestion des comptes SoAppli!
  * @author IDea Factory (dev-team@ideafactory.fr)- Oct. 2018
@@ -7,9 +7,10 @@ exports.__esModule = true;
  * @version 1.0.0
  * @todo Ajouter une collection de comptes associés
  */
-var mongoose = require("mongoose");
-var md5_helper_1 = require("./../helpers/md5-helper");
-var schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const md5_helper_1 = require("./../helpers/md5-helper");
+const settings_model_1 = require("./settings-model");
+const schema = mongoose.Schema;
 exports.AccountSchema = new schema({
     userName: {
         type: String,
@@ -37,11 +38,18 @@ exports.AccountSchema = new schema({
     },
     salt: {
         type: String,
-        "default": md5_helper_1.Md5Helper.getSalt
+        default: md5_helper_1.Md5Helper.getSalt
     },
     password: {
         type: String,
         required: 'Le mot de passe est obligatoire',
         set: md5_helper_1.Md5Helper.crypt
+    },
+    token: {
+        type: String
+    },
+    settings: {
+        type: settings_model_1.SettingsSchema
     }
 });
+//# sourceMappingURL=account-model.js.map

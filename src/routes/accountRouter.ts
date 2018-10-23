@@ -94,7 +94,6 @@ export class AccountRouter {
     }
 
     private _update(request: Request, response: Response, next: NextFunction) {
-        console.log('Mise à jour du compte : ' + request.body._id);
         accountController.update(request, response, next);
     }
 }
