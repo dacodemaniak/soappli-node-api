@@ -15,11 +15,9 @@ class AccountRouter {
      */
     constructor() {
         this.router = express_1.Router();
-        console.log('Instanciation des routes');
         this._init();
     }
     _init() {
-        console.log('Initialise les routes');
         // Requête d'authentification
         this.router
             .get('/:username/:secureKey', this._authenticate)
@@ -29,7 +27,6 @@ class AccountRouter {
             .post('/', this._add)
             // Mise à jour d'un compte
             .put('/:mongoId', this._update);
-        console.log(this.router.stack);
     }
     /**
      * Authentification d'un compte SoAppli!

@@ -11,6 +11,7 @@ import * as mongoose from "mongoose";
 
 import SoAppliRouter from './routes/soappliRouter';
 import AccountRouter from './routes/accountRouter';
+import ProductRouter from './routes/productRouter';
 
 // Définition des options CORS
 const corsOptions: cors.CorsOptions = {
@@ -59,6 +60,10 @@ class App {
         // Routes pour la gestion des comptes
         AccountRouter.use(cors(corsOptions));
         this.app.use('/api/v2/account', AccountRouter);
+
+        // Routes pour les produits
+        ProductRouter.use(cors(corsOptions));
+        this.app.use('/api/v2/product', ProductRouter);
     }
 
     private _mongoSetup(): void {
