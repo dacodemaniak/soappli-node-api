@@ -7,11 +7,13 @@
 
  import * as mongoose from 'mongoose';
 
- import { Products }  from '../models/product-model';
- import { SoappliProductInterface } from './../interfaces/soappli-product-interface';
+ import { model } from 'mongoose';
+
+ import { ProductSchema }  from '../models/product-model';
  
  import { Request, Response, NextFunction} from 'express';
 
+const Product = model('Product', ProductSchema);
 
  export class ProductController {
 
@@ -24,13 +26,12 @@
     public get(request: Request, response: Response, next: NextFunction) {
         console.log('Cherche un produit avec le code : ' + request.params.ean);
 
-        Products.findById(request.params.ean, (error: any, product: SoappliProductInterface) => {
+        Product.findById(request.params.ean, (error: any, product: any) => {
             if (error) {
                 response.status(500).send( {message: error})
             } else {
-                console.log('Produit : ' + JSON.stringify(product));
                 if (product) {
-                    console.log('Produit : ' + product.title);
+                    // Caster le produit dans un objet spécifique
                     response.status(200).send(product);
                 } else {
                     response.status(404).send({message: 'Aucun produit avec le code : ' + request.params.ean})

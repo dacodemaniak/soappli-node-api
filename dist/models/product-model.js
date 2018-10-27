@@ -9,8 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const image_model_1 = require("./image-model");
 const string_helper_1 = require("./../helpers/string-helper");
-const product_class_1 = require("./product-class");
-var productSchema = new mongoose_1.Schema({
+exports.ProductSchema = new mongoose_1.Schema({
     _id: {
         type: String,
         required: 'L\'id du produit est obligatoire'
@@ -65,8 +64,4 @@ var productSchema = new mongoose_1.Schema({
         type: Number
     }
 });
-// Définit les méthodes pour le schéma
-productSchema.method('title', product_class_1.ProductClass.prototype.title);
-productSchema.method('image', product_class_1.ProductClass.prototype.image);
-exports.Products = mongoose_1.model('ProductClass', productSchema);
 //# sourceMappingURL=product-model.js.map

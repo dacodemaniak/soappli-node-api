@@ -1,5 +1,6 @@
 "use strict";
 /**
+import { SoappliProductInterface } from "./../interfaces/soappli-product-interface";
  * @name ProductClass Classe métier pour les produits
  * @author IDea Factory (dev-team@ideafactory.fr) - Oct. 2018
  * @package src\models\

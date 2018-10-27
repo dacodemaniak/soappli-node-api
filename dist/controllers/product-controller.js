@@ -6,7 +6,9 @@
  * @version 1.0.0
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose_1 = require("mongoose");
 const product_model_1 = require("../models/product-model");
+const Product = mongoose_1.model('Product', product_model_1.ProductSchema);
 class ProductController {
     /**
      * Vérifie l'existence du pseudo au préalable
@@ -16,7 +18,7 @@ class ProductController {
      */
     get(request, response, next) {
         console.log('Cherche un produit avec le code : ' + request.params.ean);
-        product_model_1.Products.findById(request.params.ean, (error, product) => {
+        Product.findById(request.params.ean, (error, product) => {
             if (error) {
                 response.status(500).send({ message: error });
             }

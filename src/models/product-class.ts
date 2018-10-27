@@ -1,13 +1,12 @@
 /**
+import { SoappliProductInterface } from "./../interfaces/soappli-product-interface";
  * @name ProductClass Classe métier pour les produits
  * @author IDea Factory (dev-team@ideafactory.fr) - Oct. 2018
  * @package src\models\
  * @version 1.0.0
  */
 
-import { ProductInterface } from './../interfaces/product-interface';
-
-export class ProductClass implements ProductInterface {
+export class ProductClass {
     public _id: String;
     public id: String;
     public product_name_fr?: string;
