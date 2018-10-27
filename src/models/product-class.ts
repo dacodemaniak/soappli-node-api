@@ -7,7 +7,7 @@
 
 import { ProductInterface } from './../interfaces/product-interface';
 
-export class ProductClass implements ProductInterface{
+export class ProductClass implements ProductInterface {
     public _id: String;
     public id: String;
     public product_name_fr?: string;
