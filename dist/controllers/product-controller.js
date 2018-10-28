@@ -23,9 +23,8 @@ class ProductController {
                 response.status(500).send({ message: error });
             }
             else {
-                console.log('Produit : ' + JSON.stringify(product));
                 if (product) {
-                    console.log('Produit : ' + product.title);
+                    // Caster le produit dans un objet spécifique
                     response.status(200).send(product);
                 }
                 else {

@@ -13,6 +13,8 @@
  
  import { Request, Response, NextFunction} from 'express';
 
+ import { ProductInterface } from './../interfaces/product-interface';
+
 const Product = model('Product', ProductSchema);
 
  export class ProductController {
@@ -26,7 +28,7 @@ const Product = model('Product', ProductSchema);
     public get(request: Request, response: Response, next: NextFunction) {
         console.log('Cherche un produit avec le code : ' + request.params.ean);
 
-        Product.findById(request.params.ean, (error: any, product: any) => {
+        Product.findById(request.params.ean, (error: any, product: ProductInterface) => {
             if (error) {
                 response.status(500).send( {message: error})
             } else {
