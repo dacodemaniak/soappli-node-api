@@ -11,7 +11,7 @@
     product_name?: string;
     generic_name_fr?: string;
     generic_name?: string;
-    images?: ImageInterface;
+    images: any;
     categories?: string[];
     categories_tags?: string[];
     packaging_tags?: string[];

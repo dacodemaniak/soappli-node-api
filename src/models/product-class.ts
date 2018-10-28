@@ -1,11 +1,11 @@
-import { ProductInterface } from './../interfaces/product-interface';
 /**
-import { SoappliProductInterface } from "./../interfaces/soappli-product-interface";
  * @name ProductClass Classe métier pour les produits
  * @author IDea Factory (dev-team@ideafactory.fr) - Oct. 2018
  * @package src\models\
  * @version 1.0.0
  */
+
+import { SoAppliProductInterface } from './../interfaces/so-appli-product-interface';
 
 export class ProductClass {
     public _id: String;
@@ -14,7 +14,7 @@ export class ProductClass {
     public product_name?: string;
     public generic_name_fr?: string;
     public generic_name?: string;
-    public images?: ImageInterface;
+    public images: any;
     public categories?: string[];
     public categories_tags?: string[];
     public packaging_tags?: string[];
@@ -28,11 +28,22 @@ export class ProductClass {
         Object.assign(this, datas);
     }
 
-    public get(): ProductInterface {
-
+    public get(): SoAppliProductInterface {
+        return {
+            ean: this.id,
+            title: this.title(),
+            categories: this.categories(),
+            image: this.image(),
+            packaging: this.packaging(),
+            stores: this.stores(),
+            brands: this.brand(),
+            countries: this.countries(),
+            keywords: this._keywords,
+            quantity: this.serving_quantity           
+        }
     }
 
-    private title(): string {
+    private title(): String {
         if (this.product_name_fr !== '') {
             return this.product_name_fr;
         } else if (this.generic_name_fr !== '' ) {

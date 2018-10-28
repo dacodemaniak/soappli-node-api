@@ -1,6 +1,5 @@
 "use strict";
 /**
-import { SoappliProductInterface } from "./../interfaces/soappli-product-interface";
  * @name ProductClass Classe métier pour les produits
  * @author IDea Factory (dev-team@ideafactory.fr) - Oct. 2018
  * @package src\models\
@@ -9,7 +8,21 @@ import { SoappliProductInterface } from "./../interfaces/soappli-product-interfa
 Object.defineProperty(exports, "__esModule", { value: true });
 class ProductClass {
     constructor(datas) {
-        console.log('Constructeur de la classe Produit');
+        Object.assign(this, datas);
+    }
+    get() {
+        return {
+            ean: this.id,
+            title: this.title(),
+            categories: this.categories(),
+            image: this.image(),
+            packaging: this.packaging(),
+            stores: this.stores(),
+            brands: this.brand(),
+            countries: this.countries(),
+            keywords: this._keywords,
+            quantity: this.serving_quantity
+        };
     }
     title() {
         if (this.product_name_fr !== '') {
