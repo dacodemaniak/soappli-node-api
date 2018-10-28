@@ -1,3 +1,4 @@
+import { ProductInterface } from './../interfaces/product-interface';
 /**
 import { SoappliProductInterface } from "./../interfaces/soappli-product-interface";
  * @name ProductClass Classe métier pour les produits
@@ -13,6 +14,7 @@ export class ProductClass {
     public product_name?: string;
     public generic_name_fr?: string;
     public generic_name?: string;
+    public images?: ImageInterface;
     public categories?: string[];
     public categories_tags?: string[];
     public packaging_tags?: string[];
@@ -23,10 +25,14 @@ export class ProductClass {
     public serving_quantity: number;
 
     public constructor(datas: any){
-        console.log('Constructeur de la classe Produit');
+        Object.assign(this, datas);
     }
 
-    public title(): string {
+    public get(): ProductInterface {
+
+    }
+
+    private title(): string {
         if (this.product_name_fr !== '') {
             return this.product_name_fr;
         } else if (this.generic_name_fr !== '' ) {
@@ -40,7 +46,7 @@ export class ProductClass {
         return 'Produit sans nom';
     }
 
-    public image(): string {
+    private image(): string {
         return 'no-image.png';
     }
 }
