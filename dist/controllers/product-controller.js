@@ -1,11 +1,6 @@
 "use strict";
-/**
- * @name ProductController Contrôleur pour la gestion des produits SoAppli!
- * @author IDea Factory (dev-team@ideafactory.fr) - Oct. 2018
- * @package src/controllers
- * @version 1.0.0
- */
 Object.defineProperty(exports, "__esModule", { value: true });
+const product_class_1 = require("./../models/product-class");
 const mongoose_1 = require("mongoose");
 const product_model_1 = require("../models/product-model");
 const Product = mongoose_1.model('Product', product_model_1.ProductSchema);
@@ -25,7 +20,8 @@ class ProductController {
             else {
                 if (product) {
                     // Caster le produit dans un objet spécifique
-                    response.status(200).send(product);
+                    let soAppliProduct = new product_class_1.ProductClass(product);
+                    response.status(200).send(soAppliProduct.get());
                 }
                 else {
                     response.status(404).send({ message: 'Aucun produit avec le code : ' + request.params.ean });

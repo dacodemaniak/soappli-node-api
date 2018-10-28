@@ -1,3 +1,4 @@
+import { ProductClass } from './../models/product-class';
 /**
  * @name ProductController Contrôleur pour la gestion des produits SoAppli!
  * @author IDea Factory (dev-team@ideafactory.fr) - Oct. 2018
@@ -34,7 +35,8 @@ const Product = model('Product', ProductSchema);
             } else {
                 if (product) {
                     // Caster le produit dans un objet spécifique
-                    response.status(200).send(product);
+                    let soAppliProduct = new ProductClass(product);
+                    response.status(200).send(soAppliProduct.get());
                 } else {
                     response.status(404).send({message: 'Aucun produit avec le code : ' + request.params.ean})
                 }

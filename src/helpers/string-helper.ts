@@ -12,6 +12,7 @@
       * @return Array<String>
       */
      public static commaToArray(source: String): Array<String> {
+         console.log('Split : ' + source);
         let parsed: String[] = source.split(',');
         return parsed;
     }

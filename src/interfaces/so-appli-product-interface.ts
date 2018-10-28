@@ -7,12 +7,12 @@
 export interface SoAppliProductInterface {
     ean: String;
     title: String;
-    categories: string[];
-    image: string;
-    packaging: string[];
-    stores: string[];
-    brands: string[];
-    countries: string[];
-    keywords: string[];
+    categories: String[];
+    image: String;
+    packaging: String[];
+    stores: String[];
+    brands: String[];
+    countries: String;
+    keywords: String[];
     quantity: number;
 }

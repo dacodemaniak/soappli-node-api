@@ -38,7 +38,7 @@ export const ProductSchema = new Schema(
         },
 
         images: {
-            type: ImageSchema
+            type: Object
         },
 
         categories: {
