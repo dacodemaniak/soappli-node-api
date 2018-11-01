@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @version 1.0.0
  */
 const mongoose_1 = require("mongoose");
+const image_model_1 = require("./image-model");
 const string_helper_1 = require("./../helpers/string-helper");
 exports.ProductSchema = new mongoose_1.Schema({
     _id: {
@@ -32,7 +33,7 @@ exports.ProductSchema = new mongoose_1.Schema({
         type: String
     },
     images: {
-        type: Object
+        type: image_model_1.ImageSchema
     },
     categories: {
         type: Array,
@@ -51,6 +52,9 @@ exports.ProductSchema = new mongoose_1.Schema({
     // Marque
     brand_tags: {
         type: Array
+    },
+    brands: {
+        type: String
     },
     countries: {
         type: String

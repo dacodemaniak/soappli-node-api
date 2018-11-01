@@ -13,11 +13,15 @@ class UrlHelper {
      * @param url
      */
     static urlExists(url) {
-        return urlexists(url, (err, exists) => {
-            if (exists) {
-                return true;
-            }
-            return false;
+        return new Promise((resolve) => {
+            urlexists(url, (err, exists) => {
+                if (exists) {
+                    resolve(true);
+                }
+                else {
+                    resolve(false);
+                }
+            });
         });
     }
 }

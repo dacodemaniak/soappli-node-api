@@ -6,16 +6,18 @@
  */
 
  export interface ProductInterface extends Document {
+    _id: string;
     id: string;
     product_name_fr?: string;
     product_name?: string;
     generic_name_fr?: string;
     generic_name?: string;
     images: any;
-    categories?: string[];
+    categories?: string;
     categories_tags?: string[];
     packaging_tags?: string[];
     stores_tags?: string[];
+    brands: string;
     brand_tags?: string[];
     countries?: string;
     _keywords?: string[];

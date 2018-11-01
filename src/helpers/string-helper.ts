@@ -11,9 +11,9 @@
       * @param source 
       * @return Array<String>
       */
-     public static commaToArray(source: String): Array<String> {
-         console.log('Split : ' + source);
-        let parsed: String[] = source.split(',');
+     public static commaToArray(source: string): Array<string> {
+         let data = new String(source);
+        let parsed: string[] = data.split(',');
         return parsed;
     }
  }

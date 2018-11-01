@@ -21,7 +21,8 @@ exports.ImageSchema = new schema({
                 w: Number,
                 h: Number
             }
-        }
+        },
+        rev: String
     },
     front_fr: {
         sizes: {
@@ -41,7 +42,8 @@ exports.ImageSchema = new schema({
                 w: Number,
                 h: Number
             }
-        }
+        },
+        rev: String
     }
 });
 //# sourceMappingURL=image-model.js.map

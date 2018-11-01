@@ -13,8 +13,8 @@ class StringHelper {
      * @return Array<String>
      */
     static commaToArray(source) {
-        console.log('Split : ' + source);
-        let parsed = source.split(',');
+        let data = new String(source);
+        let parsed = data.split(',');
         return parsed;
     }
 }

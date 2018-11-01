@@ -38,7 +38,7 @@ export const ProductSchema = new Schema(
         },
 
         images: {
-            type: Object
+            type: ImageSchema
         },
 
         categories: {
@@ -63,7 +63,9 @@ export const ProductSchema = new Schema(
         brand_tags: {
             type: Array
         },
-
+        brands: {
+            type: String
+        },
         countries: {
             type: String
         },

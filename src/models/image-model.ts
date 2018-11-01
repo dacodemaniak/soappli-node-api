@@ -22,7 +22,8 @@ export const ImageSchema = new schema(
                     w: Number,
                     h: Number
                 }
-            }
+            },
+            rev: String
         },
         front_fr: {
             sizes: {
@@ -42,7 +43,8 @@ export const ImageSchema = new schema(
                     w: Number,
                     h: Number
                 }
-            }
+            },
+            rev: String
         }
     }
 );

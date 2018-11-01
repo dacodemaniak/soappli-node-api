@@ -21,7 +21,9 @@ class ProductController {
                 if (product) {
                     // Caster le produit dans un objet spécifique
                     let soAppliProduct = new product_class_1.ProductClass(product);
-                    response.status(200).send(soAppliProduct.get());
+                    soAppliProduct.get().then((data) => {
+                        response.status(200).send(data);
+                    });
                 }
                 else {
                     response.status(404).send({ message: 'Aucun produit avec le code : ' + request.params.ean });

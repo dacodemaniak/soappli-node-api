@@ -15,6 +15,7 @@ import { ProductClass } from './../models/product-class';
  import { Request, Response, NextFunction} from 'express';
 
  import { ProductInterface } from './../interfaces/product-interface';
+import { SoAppliProductInterface } from 'interfaces/so-appli-product-interface';
 
 const Product = model('Product', ProductSchema);
 
@@ -36,7 +37,9 @@ const Product = model('Product', ProductSchema);
                 if (product) {
                     // Caster le produit dans un objet spécifique
                     let soAppliProduct = new ProductClass(product);
-                    response.status(200).send(soAppliProduct.get());
+                    soAppliProduct.get().then((data) => {
+                        response.status(200).send(data);
+                    });
                 } else {
                     response.status(404).send({message: 'Aucun produit avec le code : ' + request.params.ean})
                 }

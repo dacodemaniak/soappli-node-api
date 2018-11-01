@@ -13,13 +13,15 @@ export class UrlHelper {
     * Teste l'existence d'une URL
     * @param url 
     */
-   public static urlExists(url: string): boolean {
-       return urlexists(url, (err, exists) => {
+   public static urlExists(url: string): Promise<boolean> {
+       return new Promise((resolve) => {
+           urlexists(url, (err, exists) => {
                if (exists) {
-                   return true;
+                   resolve(true);
+               } else {
+                resolve(false);
                }
-               return false;
-           }
-       );
+           });
+        });
    }
 }
